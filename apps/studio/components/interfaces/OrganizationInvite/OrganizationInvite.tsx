@@ -19,6 +19,7 @@ import { OrganizationInviteError } from './OrganizationInviteError'
 import {
   InterstitialAccountRow,
   InterstitialLayout,
+  InterstitialMetadataPill,
   SupabaseLogo,
 } from '@/components/layouts/InterstitialLayout'
 import { useOrganizationAcceptInvitationMutation } from '@/data/organization-members/organization-invitation-accept-mutation'
@@ -352,9 +353,7 @@ export const OrganizationInvite = () => {
           isInvitationLoading ? (
             <ShimmeringLoader className="mx-auto h-5 w-24 max-w-full rounded-full py-0" />
           ) : organizationSlug ? (
-            <p className="mx-auto w-fit rounded-full border border-muted px-2 py-1 font-mono text-[11px] tracking-tight text-foreground-lighter">
-              {organizationSlug}
-            </p>
+            <InterstitialMetadataPill>{organizationSlug}</InterstitialMetadataPill>
           ) : undefined
         }
         headerOrder={

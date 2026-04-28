@@ -163,8 +163,8 @@ const StripeProjectsLoginPage: NextPageWithLayout = () => {
   const displayName = primaryEmail ?? username ?? effectiveAccountRequest?.email ?? ''
   const showSuccessBranch = effectiveIsSuccess && !effectiveIsConfirmed
   const interstitialDescription = effectiveIsConfirmed
-    ? 'Is connected to Supabase'
-    : 'Wants to connect to Supabase'
+    ? 'is connected to Supabase'
+    : 'wants to connect to Supabase'
 
   return (
     <>
