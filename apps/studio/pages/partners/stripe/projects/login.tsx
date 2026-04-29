@@ -1,33 +1,27 @@
 import { useQuery } from '@tanstack/react-query'
 import { useParams } from 'common'
-import { LogOut } from 'lucide-react'
+import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
-import {
-  Button,
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuRadioGroup,
-  DropdownMenuRadioItem,
-  DropdownMenuTrigger,
-} from 'ui'
-import { Admonition, ShimmeringLoader } from 'ui-patterns'
+import { Button, LogoLoader } from 'ui'
+import { Admonition } from 'ui-patterns'
 
-import {
-  InterstitialAccountRow,
-  InterstitialLayout,
-  LogoPair,
-  PartnerLogo,
-  SupabaseLogo,
-} from '@/components/layouts/InterstitialLayout'
-import { ButtonTooltip } from '@/components/ui/ButtonTooltip'
+import { APIAuthorizationLayout } from '@/components/layouts/APIAuthorizationLayout'
 import { useConfirmAccountRequestMutation } from '@/data/partners/stripe-projects-confirm-mutation'
 import { accountRequestQueryOptions } from '@/data/partners/stripe-projects-query'
 import { withAuth } from '@/hooks/misc/withAuth'
 import { useSignOut } from '@/lib/auth'
 import { BASE_PATH } from '@/lib/constants'
-import { useProfileNameAndPicture } from '@/lib/profile'
-import type { NextPageWithLayout } from '@/types'
+
+const StripeIcon = () => (
+  <img
+    src={`${BASE_PATH}/img/icons/stripe-icon.svg`}
+    alt="Stripe"
+    width={40}
+    height={40}
+    className="mb-2"
+  />
+)
 
 // ---------------------------------------------------------------------------
 // Mock data — design review only
@@ -71,68 +65,44 @@ const MOCK_RESPONSES = {
 
 type MockState = keyof typeof MOCK_RESPONSES
 
-const getMockState = (value: unknown): MockState | undefined => {
-  return typeof value === 'string' && value in MOCK_RESPONSES ? (value as MockState) : undefined
-}
-
-const isTemporaryMockPreviewEnabled = () => {
-  if (process.env.NEXT_PUBLIC_ENVIRONMENT !== 'prod') return true
-  if (typeof window === 'undefined') return false
-
-  return window.location.hostname.endsWith('.vercel.app')
-}
-
-const StripeProjectsLoginPage: NextPageWithLayout = () => {
+const StripeProjectsLoginPage = () => {
   const router = useRouter()
   const { ar_id } = useParams()
 
   const signOut = useSignOut()
-  const { username, primaryEmail, avatarUrl } = useProfileNameAndPicture()
 
-  const [hasMounted, setHasMounted] = useState(false)
+  const mockParam = router.query.mock as MockState | undefined
+  const isMockMode = !!mockParam && mockParam in MOCK_RESPONSES
+
   const [mockConfirming, setMockConfirming] = useState(false)
   const [mockConfirmed, setMockConfirmed] = useState(false)
 
-  const mockParamFromQuery = getMockState(router.query.mock)
-  const hasMockParam = isTemporaryMockPreviewEnabled() && router.isReady && !!mockParamFromQuery
-  const isMockMode = hasMounted && hasMockParam
-  const mockParam = isMockMode ? mockParamFromQuery : undefined
-
-  useEffect(() => {
-    setHasMounted(true)
-  }, [])
-
-  useEffect(() => {
-    setMockConfirming(false)
-    setMockConfirmed(false)
-  }, [mockParam])
-
   const {
     data: accountRequest,
-    isPending,
-    isSuccess,
-    isError,
+    isPending: isQueryPending,
+    isSuccess: isQuerySuccess,
+    isError: isQueryError,
     error,
   } = useQuery({
     ...accountRequestQueryOptions({ arId: ar_id }),
-    enabled: !hasMockParam && typeof ar_id !== 'undefined',
+    enabled: !isMockMode && typeof ar_id !== 'undefined',
   })
 
   const {
     mutate: confirmAccountRequest,
-    isPending: isConfirming,
-    isSuccess: isConfirmed,
+    isPending: isConfirmationPending,
+    isSuccess: isConfirmationSuccess,
   } = useConfirmAccountRequestMutation()
 
   useEffect(() => {
     if (!router.isReady) return
-    if (hasMockParam) return
+    if (isMockMode) return // skip 404 redirect in mock mode
 
     if (!ar_id) {
       router.push('/404')
       return
     }
-  }, [router.isReady, ar_id, hasMockParam, router])
+  }, [router.isReady, ar_id, isMockMode, router])
 
   const handleApprove = async () => {
     if (isMockMode) {
@@ -143,7 +113,7 @@ const StripeProjectsLoginPage: NextPageWithLayout = () => {
       }, 1200)
       return
     }
-    if (!ar_id || isConfirming) return
+    if (!ar_id || isConfirmationPending) return
     confirmAccountRequest({ arId: ar_id })
   }
 
@@ -151,198 +121,115 @@ const StripeProjectsLoginPage: NextPageWithLayout = () => {
   const effectiveAccountRequest = isMockMode
     ? MOCK_RESPONSES[mockParam as MockState]
     : accountRequest
-  const effectiveIsPending = isMockMode ? false : router.isReady && isPending
-  const effectiveIsSuccess = isMockMode ? mockParam !== 'success' : isSuccess
-  const effectiveIsConfirmed = isMockMode ? mockParam === 'success' || mockConfirmed : isConfirmed
-  const effectiveIsConfirming = isMockMode ? mockConfirming : isConfirming
-  const effectiveIsError = isMockMode ? false : isError
+  const isPending = isMockMode ? false : isQueryPending
+  const isSuccess = isMockMode ? mockParam !== 'success' : isQuerySuccess
+  const isConfirmed = isMockMode ? mockParam === 'success' || mockConfirmed : isConfirmationSuccess
+  const isConfirming = isMockMode ? mockConfirming : isConfirmationPending
+  const isError = isMockMode ? false : isQueryError
 
   const linkedOrg = effectiveAccountRequest?.linked_organization
   const emailMatches = effectiveAccountRequest?.email_matches ?? false
 
-  const displayName = primaryEmail ?? username ?? effectiveAccountRequest?.email ?? ''
-  const showSuccessBranch = effectiveIsSuccess && !effectiveIsConfirmed
-  const interstitialDescription = effectiveIsConfirmed
-    ? 'is connected to Supabase'
-    : 'wants to connect to Supabase'
+  const loadingText = linkedOrg ? 'Authorizing...' : 'Creating organization...'
+  const successTitle = linkedOrg ? 'Authorized' : 'Organization created'
+  const successDescription = linkedOrg
+    ? null
+    : 'Your Supabase organization has been created and linked to your Stripe account.'
 
   return (
-    <>
+    <APIAuthorizationLayout HeadProvider={Head}>
       {isMockMode && (
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button type="warning" size="tiny" className="fixed right-3 top-3 z-50 font-mono">
-              mock: {mockParam}
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end" className="w-[180px]">
-            <DropdownMenuRadioGroup
-              value={mockParam}
-              onValueChange={(value) => {
-                router.replace(
-                  { pathname: router.pathname, query: { ...router.query, mock: value } },
-                  undefined,
-                  { shallow: true }
-                )
-                setMockConfirming(false)
-                setMockConfirmed(false)
-              }}
-            >
-              {Object.keys(MOCK_RESPONSES).map((state) => (
-                <DropdownMenuRadioItem key={state} value={state} className="font-mono text-xs">
-                  {state}
-                </DropdownMenuRadioItem>
-              ))}
-            </DropdownMenuRadioGroup>
-          </DropdownMenuContent>
-        </DropdownMenu>
-      )}
-
-      <InterstitialLayout
-        logo={
-          <LogoPair
-            left={<PartnerLogo src={`${BASE_PATH}/img/icons/stripe-icon.svg`} alt="Stripe" />}
-            right={<SupabaseLogo />}
-          />
-        }
-        title="Stripe Projects"
-        description={interstitialDescription}
-      >
-        <div className="px-6 pb-6">
-          {/* Loading */}
-          {effectiveIsPending && (
-            <div className="flex flex-col gap-6">
-              <div className="flex items-center gap-3 rounded-lg border border-secondary p-3">
-                <ShimmeringLoader className="size-9 flex-shrink-0 rounded-full py-0" />
-                <div className="min-w-0 flex-1 space-y-2">
-                  <ShimmeringLoader className="h-3 w-20 py-0" />
-                  <ShimmeringLoader className="h-4 w-40 max-w-full py-0" />
-                </div>
-                <div className="h-8 w-8 flex-shrink-0" />
-              </div>
-              <div className="flex flex-col gap-2">
-                <ShimmeringLoader className="h-10 w-full py-0" />
-                <ShimmeringLoader className="h-10 w-full py-0" />
-              </div>
-            </div>
-          )}
-
-          {/* Success */}
-          {effectiveIsConfirmed && (
-            <Admonition
-              type="success"
-              description="Stripe Projects is now connected to Supabase. You can close this tab."
-            />
-          )}
-
-          {/* Wrong account */}
-          {showSuccessBranch && !emailMatches && (
-            <div className="flex flex-col gap-3">
-              <Admonition
-                type="warning"
-                title="Wrong account"
-                description={
-                  <>
-                    Sign in as{' '}
-                    <span className="font-medium text-foreground">
-                      {effectiveAccountRequest?.email}
-                    </span>{' '}
-                    to continue.
-                  </>
-                }
-              />
-              <Button type="default" block onClick={() => signOut()}>
-                Sign out
-              </Button>
-            </div>
-          )}
-
-          {/* Linked — org already connected */}
-          {showSuccessBranch && emailMatches && linkedOrg && (
-            <div className="flex flex-col gap-3">
-              <Admonition
-                type="tip"
-                description={
-                  <>
-                    <span className="font-medium text-foreground">{linkedOrg.name}</span> is already
-                    linked to this Stripe account, and just needs to be confirmed.
-                  </>
-                }
-              />
-              <div className="flex flex-col gap-2">
-                <Button
-                  type="primary"
-                  block
-                  loading={effectiveIsConfirming}
-                  onClick={handleApprove}
-                >
-                  Confirm
-                </Button>
-                <Button type="text" block onClick={() => router.push('/')}>
-                  Cancel
-                </Button>
-              </div>
-            </div>
-          )}
-
-          {/* Pending — new org will be created */}
-          {showSuccessBranch && emailMatches && !linkedOrg && (
-            <div className="flex flex-col gap-6">
-              <InterstitialAccountRow
-                avatarUrl={avatarUrl}
-                displayName={displayName}
-                action={
-                  <ButtonTooltip
-                    type="text"
-                    size="small"
-                    className="h-8 w-8 px-0"
-                    onClick={() => signOut()}
-                    icon={
-                      <LogOut size={16} strokeWidth={1.5} className="text-foreground-lighter" />
-                    }
-                    tooltip={{
-                      content: {
-                        side: 'top',
-                        text: 'Sign out',
-                      },
-                    }}
-                  />
-                }
-              />
-
-              {/* TODO Extract into helper? */}
-              <div className="flex flex-col gap-2">
-                <Button
-                  type="primary"
-                  loading={effectiveIsConfirming}
-                  disabled={effectiveIsConfirming}
-                  onClick={handleApprove}
-                >
-                  Create organization
-                </Button>
-                <Button type="text" onClick={() => router.push('/')}>
-                  Cancel
-                </Button>
-              </div>
-            </div>
-          )}
-
-          {/* Error */}
-          {effectiveIsError && (
-            <div className="flex flex-col gap-3">
-              <Admonition
-                type="danger"
-                title="Unable to load authorization"
-                description={error?.message}
-              />
-              <Button type="default" block onClick={() => signOut()}>
-                Sign out
-              </Button>
-            </div>
-          )}
+        <div className="fixed top-3 right-3 z-50 rounded border border-dashed border-warning bg-warning/10 px-2 py-1 text-xs text-warning-600 font-mono">
+          mock: {mockParam}
         </div>
-      </InterstitialLayout>
-    </>
+      )}
+      <div className="flex flex-col items-center min-h-[500px] max-w-[400px] mx-auto">
+        {isConfirming ? (
+          <>
+            <LogoLoader />
+            <p className="pt-4 text-foreground-light">{loadingText}</p>
+          </>
+        ) : isConfirmed ? (
+          <>
+            <StripeIcon />
+            <h2 className="py-2 text-lg font-medium">{successTitle}</h2>
+            <p className="text-sm text-center text-foreground-light">
+              {successDescription && `${successDescription} `}
+              You can close this window.
+            </p>
+          </>
+        ) : isPending ? (
+          <LogoLoader />
+        ) : isSuccess ? (
+          <>
+            <StripeIcon />
+            <h2 className="py-2 text-lg font-medium text-balance">
+              Stripe Projects is requesting access
+            </h2>
+            <p className="text-sm text-center text-foreground-light text-balance">
+              Stripe Projects wants to connect to the Supabase account for{' '}
+              <strong>{effectiveAccountRequest?.email}</strong>.
+              {emailMatches && !linkedOrg && (
+                <> This will create a new Supabase organization linked to Stripe.</>
+              )}
+            </p>
+            {!emailMatches ? (
+              <>
+                <Admonition type="warning" className="mt-4">
+                  <p className="text-sm text-foreground-light">
+                    You're signed in as a different account. Sign out and sign back in as{' '}
+                    <strong className="text-foreground">{effectiveAccountRequest?.email}</strong>.
+                    Then return to Stripe to restart the request.
+                  </p>
+                </Admonition>
+                <div className="py-6">
+                  <Button size="small" type="default" onClick={() => signOut()}>
+                    Sign out
+                  </Button>
+                </div>
+              </>
+            ) : linkedOrg ? (
+              // Org already linked to this Stripe account — inform user and confirm
+              <>
+                <Admonition type="note" className="mt-4" showIcon>
+                  <p className="text-sm text-foreground-light">
+                    <strong className="text-foreground">{linkedOrg.name}</strong> is already linked
+                    to Stripe. Authorize Stripe Projects to continue.
+                  </p>
+                </Admonition>
+                <div className="py-6">
+                  <Button
+                    size="small"
+                    type="primary"
+                    disabled={isConfirming}
+                    onClick={handleApprove}
+                  >
+                    Authorize Stripe Projects
+                  </Button>
+                </div>
+              </>
+            ) : (
+              // No linked org — a new one will be created
+              <div className="py-6">
+                <Button size="small" type="primary" disabled={isConfirming} onClick={handleApprove}>
+                  Authorize Stripe Projects
+                </Button>
+              </div>
+            )}
+          </>
+        ) : isError ? (
+          <>
+            <h2 className="py-2 text-lg font-medium text-destructive">Error</h2>
+            <p className="text-foreground-light">{error?.message}</p>
+            <div className="py-6">
+              <Button size="small" type="default" onClick={() => signOut()}>
+                Sign out
+              </Button>
+            </div>
+          </>
+        ) : null}
+      </div>
+    </APIAuthorizationLayout>
   )
 }
 
