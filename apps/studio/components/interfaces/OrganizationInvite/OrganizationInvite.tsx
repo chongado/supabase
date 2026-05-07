@@ -15,7 +15,6 @@ import {
 import {
   InterstitialAccountRow,
   InterstitialLayout,
-  InterstitialMetadataPill,
   SupabaseLogo,
 } from '@/components/layouts/InterstitialLayout'
 import { useOrganizationAcceptInvitationMutation } from '@/data/organization-members/organization-invitation-accept-mutation'
@@ -236,11 +235,6 @@ export const OrganizationInvite = () => {
     !effectiveData.token_does_not_exist &&
     !effectiveData.expired_token
   const organizationName = effectiveData?.organization_name ?? 'an organization'
-  const organizationSlug = showOrganizationHeader
-    ? isMockMode
-      ? 'rbrcvutranxovfzrovye'
-      : slug
-    : undefined
   const isSignedOut = !effectiveIsLoggedIn || (!effectiveProfile && !effectiveIsLoadingProfile)
   const signedOutDescription = `Sign in${
     effectiveIsSignUpEnabled ? ' or create an account' : ''
@@ -254,12 +248,12 @@ export const OrganizationInvite = () => {
         : effectiveData?.token_does_not_exist
           ? 'Invite invalid'
           : showOrganizationHeader
-            ? organizationName
+            ? `Join ${organizationName}`
             : isSignedOut
               ? 'View invitation'
               : undefined
   const interstitialDescription = showOrganizationHeader
-    ? 'You have been invited to join'
+    ? 'You have been invited to join this Supabase organization'
     : isSignedOut
       ? signedOutDescription
       : undefined
@@ -299,15 +293,16 @@ export const OrganizationInvite = () => {
 
   const effectiveIsJoining = isMockMode ? mockConfig?.isJoining || mockJoining : isJoining
   const displayName = effectivePrimaryEmail ?? effectiveUsername ?? ''
-  const mockSwitcher = isMockMode && mockParam ? (
-    <ConnectPreviewToolbar>
-      <ConnectMockMenu
-        state={mockParam}
-        states={ORGANIZATION_INVITE_MOCK_STATES}
-        onSelect={replaceMockState}
-      />
-    </ConnectPreviewToolbar>
-  ) : null
+  const mockSwitcher =
+    isMockMode && mockParam ? (
+      <ConnectPreviewToolbar>
+        <ConnectMockMenu
+          state={mockParam}
+          states={ORGANIZATION_INVITE_MOCK_STATES}
+          onSelect={replaceMockState}
+        />
+      </ConnectPreviewToolbar>
+    ) : null
 
   const withMockSwitcher = (children: ReactNode) => (
     <>
@@ -331,12 +326,7 @@ export const OrganizationInvite = () => {
         subtitle={
           isInvitationLoading ? (
             <ShimmeringLoader className="mx-auto h-5 w-24 max-w-full rounded-full py-0" />
-          ) : organizationSlug ? (
-            <InterstitialMetadataPill>{organizationSlug}</InterstitialMetadataPill>
           ) : undefined
-        }
-        headerOrder={
-          showOrganizationHeader || isInvitationLoading ? 'description-first' : 'title-first'
         }
         titleClassName="text-xl"
         subtitleClassName="leading-none"

@@ -15,7 +15,8 @@ interface InterstitialLayoutProps {
   title?: ReactNode
   description?: ReactNode
   subtitle?: ReactNode
-  headerOrder?: 'title-first' | 'description-first'
+  containerClassName?: string
+  cardClassName?: string
   titleClassName?: string
   descriptionClassName?: string
   subtitleClassName?: string
@@ -33,59 +34,58 @@ export const InterstitialLayout = ({
   title,
   description,
   subtitle,
-  headerOrder = 'title-first',
+  containerClassName,
+  cardClassName,
   titleClassName,
   descriptionClassName,
   subtitleClassName,
   children,
 }: PropsWithChildren<InterstitialLayoutProps>) => {
+  const TitleElement = typeof title === 'string' ? 'h1' : 'div'
+  const DescriptionElement = typeof description === 'string' ? 'p' : 'div'
+
   const titleElement = title ? (
-    <div
+    <TitleElement
       className={cn(
         'font-sans tracking-tight text-balance text-lg font-medium normal-case text-foreground',
         titleClassName
       )}
     >
       {title}
-    </div>
+    </TitleElement>
   ) : null
 
   const descriptionElement = description ? (
-    <div
+    <DescriptionElement
       className={cn(
         '!m-0 px-3 !text-balance text-sm text-foreground-lighter leading-tight',
         descriptionClassName
       )}
     >
       {description}
-    </div>
+    </DescriptionElement>
   ) : null
 
-  const orderedHeaderContent =
-    headerOrder === 'description-first' ? (
-      <>
-        {descriptionElement}
-        {titleElement}
-      </>
-    ) : (
-      <>
-        {titleElement}
-        {descriptionElement}
-      </>
-    )
-
   return (
-    <div className="flex min-h-screen w-full items-center justify-center bg-studio px-2 py-6">
+    <div
+      className={cn(
+        'flex min-h-screen w-full items-center justify-center bg-studio px-2 py-6',
+        containerClassName
+      )}
+    >
       <MotionCard
         layout="size"
         transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-        className="overflow-hidden max-w-[400px] w-full mx-auto"
+        className={cn('overflow-hidden max-w-[400px] w-full mx-auto', cardClassName)}
       >
         {(logo || title || description || subtitle) && (
           <CardHeader className="font-normal items-center gap-0 space-y-0 px-6 py-6 text-center [--card-padding-x:1.5rem] border-0">
             {logo && <div className="mb-4 flex justify-center">{logo}</div>}
             {(titleElement || descriptionElement) && (
-              <div className="flex flex-col items-center gap-1">{orderedHeaderContent}</div>
+              <div className="flex flex-col items-center gap-1">
+                {titleElement}
+                {descriptionElement}
+              </div>
             )}
             {subtitle && (
               <div className={cn('mt-2.5 text-sm text-foreground-lighter', subtitleClassName)}>
@@ -156,8 +156,13 @@ export const InterstitialAccountRow = ({
   action?: ReactNode
   className?: string
 }) => (
-  <Card className={cn('shadow-none', className)}>
-    <CardContent className="flex items-center gap-3 border-none px-4 py-3">
+  <Card className={cn('shadow-none', !action && 'border-muted bg-surface-200/50', className)}>
+    <CardContent
+      className={cn(
+        'flex gap-3 border-none',
+        action ? 'items-center px-4 py-3' : 'items-start p-3'
+      )}
+    >
       <ProfileImage
         src={avatarUrl}
         alt={displayName}

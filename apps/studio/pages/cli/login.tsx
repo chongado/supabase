@@ -224,7 +224,7 @@ export const CliLoginScreen = ({
 
     return withInterstitial({
       title: 'Missing sign-in parameters',
-      description: 'This Supabase CLI sign-in request cannot be authorized.',
+      description: 'This Supabase CLI sign-in request cannot be authorized',
       children: (
         <div className="flex flex-col gap-3">
           <Admonition
@@ -244,7 +244,7 @@ export const CliLoginScreen = ({
   if (effectiveStatus._tag === 'error') {
     return withInterstitial({
       title: 'Unable to create CLI sign-in',
-      description: 'Retry the sign-in command from Supabase CLI.',
+      description: 'Retry the sign-in command from Supabase CLI',
       children: (
         <div className="flex flex-col gap-3">
           <Admonition
@@ -288,7 +288,7 @@ export const CliLoginScreen = ({
             {Array.from(effectiveStatus.deviceCode.padEnd(8, ' ')).map((character, index) => (
               <span
                 key={index}
-                className="flex h-10 flex-1 cursor-text select-text items-center justify-center border-y border-r border-input first:rounded-l-md first:border-l last:rounded-r-md"
+                className="flex h-11 flex-1 cursor-text select-text items-center justify-center border-y border-r border-input first:rounded-l-md first:border-l last:rounded-r-md"
               >
                 {character}
               </span>
@@ -304,10 +304,7 @@ export const CliLoginScreen = ({
           />
         </div>
 
-        <InterstitialAccountRow
-          displayName={displayName}
-          className="bg-surface-200/50 border-muted"
-        />
+        <InterstitialAccountRow displayName={displayName} />
 
         <p className="text-center text-xs text-foreground-muted text-balance">
           After authorizing, you can close this tab or manage tokens like this one in{' '}
