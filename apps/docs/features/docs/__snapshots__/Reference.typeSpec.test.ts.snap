@@ -4260,7 +4260,8 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
                         {
                           "type": "literal",
                           "value": "refresh_token"
-                        }
+                        },
+                        null
                       ]
                     }
                   },
@@ -4441,7 +4442,8 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
                                   {
                                     "type": "literal",
                                     "value": "refresh_token"
-                                  }
+                                  },
+                                  null
                                 ]
                               }
                             },
@@ -4751,7 +4753,8 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
                                   {
                                     "type": "literal",
                                     "value": "refresh_token"
-                                  }
+                                  },
+                                  null
                                 ]
                               }
                             },
@@ -5102,7 +5105,8 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
                                   {
                                     "type": "literal",
                                     "value": "refresh_token"
-                                  }
+                                  },
+                                  null
                                 ]
                               }
                             },
@@ -5301,7 +5305,8 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
                         {
                           "type": "literal",
                           "value": "refresh_token"
-                        }
+                        },
+                        null
                       ]
                     }
                   },
@@ -5468,7 +5473,8 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
                                   {
                                     "type": "literal",
                                     "value": "refresh_token"
-                                  }
+                                  },
+                                  null
                                 ]
                               }
                             },
@@ -5686,6 +5692,9 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
               ]
             }
           }
+        },
+        "comment": {
+          "shortText": "Deletes a specific passkey for a specific user.\\n\\nThis function should only be called on a server. Never expose your \`service_role\` key in the browser."
         }
       },
       "@supabase/supabase-js.GoTrueAdminPasskeyApi.listPasskeys": {
@@ -5788,6 +5797,9 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
               ]
             }
           }
+        },
+        "comment": {
+          "shortText": "Lists all passkeys registered for a specific user.\\n\\nThis function should only be called on a server. Never expose your \`service_role\` key in the browser."
         }
       },
       "@supabase/supabase-js.GoTrueAdminApi.createUser": {
@@ -10325,7 +10337,8 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
                       {
                         "type": "literal",
                         "value": "pkce"
-                      }
+                      },
+                      null
                     ]
                   },
                   "isOptional": true
@@ -11941,7 +11954,8 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
                                     {
                                       "type": "literal",
                                       "value": "aal2"
-                                    }
+                                    },
+                                    null
                                   ]
                                 },
                                 {
@@ -11970,7 +11984,8 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
                                     {
                                       "type": "literal",
                                       "value": "aal2"
-                                    }
+                                    },
+                                    null
                                   ]
                                 },
                                 {
@@ -15304,6 +15319,9 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
               ]
             }
           }
+        },
+        "comment": {
+          "shortText": "Deletes a passkey for the currently signed-in user."
         }
       },
       "@supabase/supabase-js.AuthPasskeyApi.list": {
@@ -15389,6 +15407,9 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
               ]
             }
           }
+        },
+        "comment": {
+          "shortText": "Lists all passkeys registered for the currently signed-in user."
         }
       },
       "@supabase/supabase-js.AuthPasskeyApi.startAuthentication": {
@@ -15490,6 +15511,9 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
               ]
             }
           }
+        },
+        "comment": {
+          "shortText": "Starts the passkey authentication ceremony. Fetches an authentication\\nchallenge and credential request options from the server. Used as the\\nfirst step of a two-step sign-in flow when the caller wants to handle\\n\`navigator.credentials.get()\` themselves."
         }
       },
       "@supabase/supabase-js.AuthPasskeyApi.startRegistration": {
@@ -15563,6 +15587,9 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
               ]
             }
           }
+        },
+        "comment": {
+          "shortText": "Starts the passkey registration ceremony. Fetches a registration challenge\\nand credential creation options from the server. Used as the first step of\\na two-step registration flow when the caller wants to handle\\n\`navigator.credentials.create()\` themselves."
         }
       },
       "@supabase/supabase-js.AuthPasskeyApi.update": {
@@ -15675,6 +15702,9 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
               ]
             }
           }
+        },
+        "comment": {
+          "shortText": "Updates a passkey's friendly name."
         }
       },
       "@supabase/supabase-js.AuthPasskeyApi.verifyAuthentication": {
@@ -16886,6 +16916,9 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
               ]
             }
           }
+        },
+        "comment": {
+          "shortText": "Verifies a passkey authentication credential against a previously issued\\nchallenge. Used as the second step of a two-step sign-in flow."
         }
       },
       "@supabase/supabase-js.AuthPasskeyApi.verifyRegistration": {
@@ -16990,6 +17023,9 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
               ]
             }
           }
+        },
+        "comment": {
+          "shortText": "Verifies a passkey registration credential against a previously issued\\nchallenge. Used as the second step of a two-step registration flow."
         }
       },
       "@supabase/supabase-js.GoTrueClient._refreshSession": {
@@ -21435,6 +21471,7 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
                                 "type": {
                                   "type": "union",
                                   "subTypes": [
+                                    null,
                                     {
                                       "type": "literal",
                                       "value": "RSA"
@@ -21500,6 +21537,7 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
                           "type": {
                             "type": "union",
                             "subTypes": [
+                              null,
                               {
                                 "type": "literal",
                                 "value": "RSA"
@@ -21565,7 +21603,8 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
                                       {
                                         "type": "literal",
                                         "value": "aal2"
-                                      }
+                                      },
+                                      null
                                     ]
                                   }
                                 },
@@ -21802,7 +21841,8 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
                                       {
                                         "type": "literal",
                                         "value": "HS256"
-                                      }
+                                      },
+                                      null
                                     ]
                                   }
                                 },
@@ -41970,7 +42010,8 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
                           {
                             "type": "literal",
                             "value": "phone_change"
-                          }
+                          },
+                          null
                         ]
                       },
                       "comment": {
@@ -42063,7 +42104,8 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
                           {
                             "type": "literal",
                             "value": "email"
-                          }
+                          },
+                          null
                         ]
                       },
                       "comment": {
@@ -42115,7 +42157,8 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
                           {
                             "type": "literal",
                             "value": "email"
-                          }
+                          },
+                          null
                         ]
                       },
                       "comment": {
@@ -43593,8 +43636,8 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
               "response": "\`\`\`ts\\nlet x: typeof data // CountryRowProperties & { status: \\"A\\" | \\"B\\" } | null\\n\`\`\`"
             },
             {
-              "id": "example-5",
-              "name": "Example 5",
+              "id": "merge-vs-replace-existing-types",
+              "name": "Merge vs replace existing types",
               "code": "\`\`\`typescript\\n// Merge with existing types (default behavior)\\nconst query = supabase\\n  .from('users')\\n  .select()\\n  .overrideTypes<{ custom_field: string }>()\\n\\n// Replace existing types completely\\nconst replaceQuery = supabase\\n  .from('users')\\n  .select()\\n  .overrideTypes<{ id: number; name: string }, { merge: false }>()\\n\`\`\`"
             }
           ]
@@ -46114,8 +46157,8 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
               "response": "\`\`\`ts\\nlet x: typeof data // CountryRowProperties & { status: \\"A\\" | \\"B\\" } | null\\n\`\`\`"
             },
             {
-              "id": "example-5",
-              "name": "Example 5",
+              "id": "merge-vs-replace-existing-types",
+              "name": "Merge vs replace existing types",
               "code": "\`\`\`typescript\\n// Merge with existing types (default behavior)\\nconst query = supabase\\n  .from('users')\\n  .select()\\n  .overrideTypes<{ custom_field: string }>()\\n\\n// Replace existing types completely\\nconst replaceQuery = supabase\\n  .from('users')\\n  .select()\\n  .overrideTypes<{ id: number; name: string }, { merge: false }>()\\n\`\`\`"
             }
           ]
@@ -47142,6 +47185,7 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
                         "type": "literal",
                         "value": "exact"
                       },
+                      null,
                       {
                         "type": "literal",
                         "value": "planned"
@@ -47211,8 +47255,23 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
           {
             "name": "values",
             "type": {
-              "type": "nameOnly",
-              "name": "RejectExcessProperties"
+              "type": "union",
+              "subTypes": [
+                {
+                  "type": "nameOnly",
+                  "name": "RejectExcessProperties"
+                },
+                {
+                  "type": "array",
+                  "elemType": {
+                    "type": "nameOnly",
+                    "name": "RejectExcessProperties"
+                  }
+                }
+              ]
+            },
+            "comment": {
+              "shortText": "The values to insert. Pass an object to insert a single row\\nor an array to insert multiple rows."
             }
           },
           {
@@ -47229,6 +47288,7 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
                         "type": "literal",
                         "value": "exact"
                       },
+                      null,
                       {
                         "type": "literal",
                         "value": "planned"
@@ -47239,11 +47299,28 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
                       }
                     ]
                   },
-                  "isOptional": true
+                  "isOptional": true,
+                  "comment": {
+                    "shortText": "Count algorithm to use to count inserted rows.\\n\\n\`\\"exact\\"\`: Exact but slow count algorithm. Performs a \`COUNT(*)\` under the\\nhood.\\n\\n\`\\"planned\\"\`: Approximated but fast count algorithm. Uses the Postgres\\nstatistics under the hood.\\n\\n\`\\"estimated\\"\`: Uses exact count for low numbers and planned count for high\\nnumbers."
+                  }
+                },
+                {
+                  "name": "defaultToNull",
+                  "type": {
+                    "type": "intrinsic",
+                    "name": "boolean"
+                  },
+                  "isOptional": true,
+                  "comment": {
+                    "shortText": "Make missing fields default to \`null\`.\\nOtherwise, use the default value for the column. Only applies for bulk\\ninserts."
+                  }
                 }
               ]
             },
-            "isOptional": true
+            "isOptional": true,
+            "comment": {
+              "shortText": "Named parameters"
+            }
           }
         ],
         "ret": {
@@ -47252,66 +47329,39 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
             "name": "PostgrestFilterBuilder"
           }
         },
-        "altSignatures": [
-          {
-            "params": [
-              {
-                "name": "values",
-                "type": {
-                  "type": "array",
-                  "elemType": {
-                    "type": "nameOnly",
-                    "name": "RejectExcessProperties"
-                  }
-                }
+        "comment": {
+          "shortText": "Perform an INSERT into the table or view.\\n\\nBy default, inserted rows are not returned. To return it, chain the call\\nwith \`.select()\`.",
+          "examples": [
+            {
+              "id": "create-a-record",
+              "name": "Create a record",
+              "code": "\`\`\`ts\\nconst { error } = await supabase\\n  .from('countries')\\n  .insert({ id: 1, name: 'Mordor' })\\n\`\`\`",
+              "data": {
+                "sql": "\`\`\`sql\\ncreate table\\n  countries (id int8 primary key, name text);\\n\`\`\`"
               },
-              {
-                "name": "options",
-                "type": {
-                  "type": "object",
-                  "properties": [
-                    {
-                      "name": "count",
-                      "type": {
-                        "type": "union",
-                        "subTypes": [
-                          {
-                            "type": "literal",
-                            "value": "exact"
-                          },
-                          {
-                            "type": "literal",
-                            "value": "planned"
-                          },
-                          {
-                            "type": "literal",
-                            "value": "estimated"
-                          }
-                        ]
-                      },
-                      "isOptional": true
-                    },
-                    {
-                      "name": "defaultToNull",
-                      "type": {
-                        "type": "intrinsic",
-                        "name": "boolean"
-                      },
-                      "isOptional": true
-                    }
-                  ]
-                },
-                "isOptional": true
-              }
-            ],
-            "ret": {
-              "type": {
-                "type": "nameOnly",
-                "name": "PostgrestFilterBuilder"
-              }
+              "response": "\`\`\`json\\n{\\n  \\"status\\": 201,\\n  \\"statusText\\": \\"Created\\"\\n}\\n\`\`\`"
+            },
+            {
+              "id": "create-a-record-and-return-it",
+              "name": "Create a record and return it",
+              "code": "\`\`\`ts\\nconst { data, error } = await supabase\\n  .from('countries')\\n  .insert({ id: 1, name: 'Mordor' })\\n  .select()\\n\`\`\`",
+              "data": {
+                "sql": "\`\`\`sql\\ncreate table\\n  countries (id int8 primary key, name text);\\n\`\`\`"
+              },
+              "response": "\`\`\`json\\n{\\n  \\"data\\": [\\n    {\\n      \\"id\\": 1,\\n      \\"name\\": \\"Mordor\\"\\n    }\\n  ],\\n  \\"status\\": 201,\\n  \\"statusText\\": \\"Created\\"\\n}\\n\`\`\`"
+            },
+            {
+              "id": "bulk-create",
+              "name": "Bulk create",
+              "code": "\`\`\`ts\\nconst { error } = await supabase\\n  .from('countries')\\n  .insert([\\n    { id: 1, name: 'Mordor' },\\n    { id: 1, name: 'The Shire' },\\n  ])\\n\`\`\`",
+              "description": "A bulk create operation is handled in a single transaction.\\nIf any of the inserts fail, none of the rows are inserted.",
+              "data": {
+                "sql": "\`\`\`sql\\ncreate table\\n  countries (id int8 primary key, name text);\\n\`\`\`"
+              },
+              "response": "\`\`\`json\\n{\\n  \\"error\\": {\\n    \\"code\\": \\"23505\\",\\n    \\"details\\": \\"Key (id)=(1) already exists.\\",\\n    \\"hint\\": null,\\n    \\"message\\": \\"duplicate key value violates unique constraint \\\\\\"countries_pkey\\\\\\"\\"\\n  },\\n  \\"status\\": 409,\\n  \\"statusText\\": \\"Conflict\\"\\n}\\n\`\`\`"
             }
-          }
-        ]
+          ]
+        }
       },
       "@supabase/supabase-js.PostgrestQueryBuilder.select": {
         "name": "@supabase/supabase-js.PostgrestQueryBuilder.select",
@@ -47341,6 +47391,7 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
                         "type": "literal",
                         "value": "exact"
                       },
+                      null,
                       {
                         "type": "literal",
                         "value": "planned"
@@ -47532,6 +47583,7 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
                         "type": "literal",
                         "value": "exact"
                       },
+                      null,
                       {
                         "type": "literal",
                         "value": "planned"
@@ -47602,8 +47654,23 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
           {
             "name": "values",
             "type": {
-              "type": "nameOnly",
-              "name": "RejectExcessProperties"
+              "type": "union",
+              "subTypes": [
+                {
+                  "type": "nameOnly",
+                  "name": "RejectExcessProperties"
+                },
+                {
+                  "type": "array",
+                  "elemType": {
+                    "type": "nameOnly",
+                    "name": "RejectExcessProperties"
+                  }
+                }
+              ]
+            },
+            "comment": {
+              "shortText": "The values to upsert with. Pass an object to upsert a\\nsingle row or an array to upsert multiple rows."
             }
           },
           {
@@ -47620,6 +47687,7 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
                         "type": "literal",
                         "value": "exact"
                       },
+                      null,
                       {
                         "type": "literal",
                         "value": "planned"
@@ -47630,7 +47698,21 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
                       }
                     ]
                   },
-                  "isOptional": true
+                  "isOptional": true,
+                  "comment": {
+                    "shortText": "Count algorithm to use to count upserted rows.\\n\\n\`\\"exact\\"\`: Exact but slow count algorithm. Performs a \`COUNT(*)\` under the\\nhood.\\n\\n\`\\"planned\\"\`: Approximated but fast count algorithm. Uses the Postgres\\nstatistics under the hood.\\n\\n\`\\"estimated\\"\`: Uses exact count for low numbers and planned count for high\\nnumbers."
+                  }
+                },
+                {
+                  "name": "defaultToNull",
+                  "type": {
+                    "type": "intrinsic",
+                    "name": "boolean"
+                  },
+                  "isOptional": true,
+                  "comment": {
+                    "shortText": "Make missing fields default to \`null\`.\\nOtherwise, use the default value for the column. This only applies when\\ninserting new rows, not when merging with existing rows under\\n\`ignoreDuplicates: false\`. This also only applies when doing bulk upserts."
+                  }
                 },
                 {
                   "name": "ignoreDuplicates",
@@ -47638,7 +47720,10 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
                     "type": "intrinsic",
                     "name": "boolean"
                   },
-                  "isOptional": true
+                  "isOptional": true,
+                  "comment": {
+                    "shortText": "If \`true\`, duplicate rows are ignored. If\\n\`false\`, duplicate rows are merged with existing rows."
+                  }
                 },
                 {
                   "name": "onConflict",
@@ -47646,11 +47731,17 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
                     "type": "intrinsic",
                     "name": "string"
                   },
-                  "isOptional": true
+                  "isOptional": true,
+                  "comment": {
+                    "shortText": "Comma-separated UNIQUE column(s) to specify how\\nduplicate rows are determined. Two rows are duplicates if all the\\n\`onConflict\` columns are equal."
+                  }
                 }
               ]
             },
-            "isOptional": true
+            "isOptional": true,
+            "comment": {
+              "shortText": "Named parameters"
+            }
           }
         ],
         "ret": {
@@ -47659,82 +47750,50 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
             "name": "PostgrestFilterBuilder"
           }
         },
-        "altSignatures": [
-          {
-            "params": [
-              {
-                "name": "values",
-                "type": {
-                  "type": "array",
-                  "elemType": {
-                    "type": "nameOnly",
-                    "name": "RejectExcessProperties"
-                  }
-                }
+        "comment": {
+          "shortText": "Perform an UPSERT on the table or view. Depending on the column(s) passed\\nto \`onConflict\`, \`.upsert()\` allows you to perform the equivalent of\\n\`.insert()\` if a row with the corresponding \`onConflict\` columns doesn't\\nexist, or if it does exist, perform an alternative action depending on\\n\`ignoreDuplicates\`.\\n\\nBy default, upserted rows are not returned. To return it, chain the call\\nwith \`.select()\`.",
+          "text": "- Primary keys must be included in \`values\` to use upsert.",
+          "examples": [
+            {
+              "id": "upsert-a-single-row-using-a-unique-key",
+              "name": "Upsert a single row using a unique key",
+              "code": "\`\`\`ts\\n// Upserting a single row, overwriting based on the 'username' unique column\\nconst { data, error } = await supabase\\n  .from('users')\\n  .upsert({ username: 'supabot' }, { onConflict: 'username' })\\n\\n// Example response:\\n// {\\n//   data: [\\n//     { id: 4, message: 'bar', username: 'supabot' }\\n//   ],\\n//   error: null\\n// }\\n\`\`\`"
+            },
+            {
+              "id": "upsert-with-conflict-resolution-and-exact-row-counting",
+              "name": "Upsert with conflict resolution and exact row counting",
+              "code": "\`\`\`ts\\n// Upserting and returning exact count\\nconst { data, error, count } = await supabase\\n  .from('users')\\n  .upsert(\\n    {\\n      id: 3,\\n      message: 'foo',\\n      username: 'supabot'\\n    },\\n    {\\n      onConflict: 'username',\\n      count: 'exact'\\n    }\\n  )\\n\\n// Example response:\\n// {\\n//   data: [\\n//     {\\n//       id: 42,\\n//       handle: \\"saoirse\\",\\n//       display_name: \\"Saoirse\\"\\n//     }\\n//   ],\\n//   count: 1,\\n//   error: null\\n// }\\n\`\`\`"
+            },
+            {
+              "id": "upsert-your-data",
+              "name": "Upsert your data",
+              "code": "\`\`\`ts\\nconst { data, error } = await supabase\\n  .from('instruments')\\n  .upsert({ id: 1, name: 'piano' })\\n  .select()\\n\`\`\`",
+              "data": {
+                "sql": "\`\`\`sql\\ncreate table\\n  instruments (id int8 primary key, name text);\\n\\ninsert into\\n  instruments (id, name)\\nvalues\\n  (1, 'harpsichord');\\n\`\`\`"
               },
-              {
-                "name": "options",
-                "type": {
-                  "type": "object",
-                  "properties": [
-                    {
-                      "name": "count",
-                      "type": {
-                        "type": "union",
-                        "subTypes": [
-                          {
-                            "type": "literal",
-                            "value": "exact"
-                          },
-                          {
-                            "type": "literal",
-                            "value": "planned"
-                          },
-                          {
-                            "type": "literal",
-                            "value": "estimated"
-                          }
-                        ]
-                      },
-                      "isOptional": true
-                    },
-                    {
-                      "name": "defaultToNull",
-                      "type": {
-                        "type": "intrinsic",
-                        "name": "boolean"
-                      },
-                      "isOptional": true
-                    },
-                    {
-                      "name": "ignoreDuplicates",
-                      "type": {
-                        "type": "intrinsic",
-                        "name": "boolean"
-                      },
-                      "isOptional": true
-                    },
-                    {
-                      "name": "onConflict",
-                      "type": {
-                        "type": "intrinsic",
-                        "name": "string"
-                      },
-                      "isOptional": true
-                    }
-                  ]
-                },
-                "isOptional": true
-              }
-            ],
-            "ret": {
-              "type": {
-                "type": "nameOnly",
-                "name": "PostgrestFilterBuilder"
-              }
+              "response": "\`\`\`json\\n{\\n  \\"data\\": [\\n    {\\n      \\"id\\": 1,\\n      \\"name\\": \\"piano\\"\\n    }\\n  ],\\n  \\"status\\": 201,\\n  \\"statusText\\": \\"Created\\"\\n}\\n\`\`\`"
+            },
+            {
+              "id": "bulk-upsert-your-data",
+              "name": "Bulk Upsert your data",
+              "code": "\`\`\`ts\\nconst { data, error } = await supabase\\n  .from('instruments')\\n  .upsert([\\n    { id: 1, name: 'piano' },\\n    { id: 2, name: 'harp' },\\n  ])\\n  .select()\\n\`\`\`",
+              "data": {
+                "sql": "\`\`\`sql\\ncreate table\\n  instruments (id int8 primary key, name text);\\n\\ninsert into\\n  instruments (id, name)\\nvalues\\n  (1, 'harpsichord');\\n\`\`\`"
+              },
+              "response": "\`\`\`json\\n{\\n  \\"data\\": [\\n    {\\n      \\"id\\": 1,\\n      \\"name\\": \\"piano\\"\\n    },\\n    {\\n      \\"id\\": 2,\\n      \\"name\\": \\"harp\\"\\n    }\\n  ],\\n  \\"status\\": 201,\\n  \\"statusText\\": \\"Created\\"\\n}\\n\`\`\`"
+            },
+            {
+              "id": "upserting-into-tables-with-constraints",
+              "name": "Upserting into tables with constraints",
+              "code": "\`\`\`ts\\nconst { data, error } = await supabase\\n  .from('users')\\n  .upsert({ id: 42, handle: 'saoirse', display_name: 'Saoirse' })\\n  .select()\\n\`\`\`",
+              "description": "In the following query, \`upsert()\` implicitly uses the \`id\`\\n(primary key) column to determine conflicts. If there is no existing\\nrow with the same \`id\`, \`upsert()\` inserts a new row, which\\nwill fail in this case as there is already a row with \`handle\` \`\\"saoirse\\"\`.\\nUsing the \`onConflict\` option, you can instruct \`upsert()\` to use\\nanother column with a unique constraint to determine conflicts.",
+              "data": {
+                "sql": "\`\`\`sql\\ncreate table\\n  users (\\n    id int8 generated by default as identity primary key,\\n    handle text not null unique,\\n    display_name text\\n  );\\n\\ninsert into\\n  users (id, handle, display_name)\\nvalues\\n  (1, 'saoirse', null);\\n\`\`\`"
+              },
+              "response": "\`\`\`json\\n{\\n  \\"error\\": {\\n    \\"code\\": \\"23505\\",\\n    \\"details\\": \\"Key (handle)=(saoirse) already exists.\\",\\n    \\"hint\\": null,\\n    \\"message\\": \\"duplicate key value violates unique constraint \\\\\\"users_handle_key\\\\\\"\\"\\n  },\\n  \\"status\\": 409,\\n  \\"statusText\\": \\"Conflict\\"\\n}\\n\`\`\`"
             }
-          }
-        ]
+          ]
+        }
       },
       "@supabase/supabase-js.PostgrestTransformBuilder.constructor": {
         "name": "@supabase/supabase-js.PostgrestTransformBuilder.constructor",
@@ -48503,8 +48562,8 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
               "response": "\`\`\`ts\\nlet x: typeof data // CountryRowProperties & { status: \\"A\\" | \\"B\\" } | null\\n\`\`\`"
             },
             {
-              "id": "example-5",
-              "name": "Example 5",
+              "id": "merge-vs-replace-existing-types",
+              "name": "Merge vs replace existing types",
               "code": "\`\`\`typescript\\n// Merge with existing types (default behavior)\\nconst query = supabase\\n  .from('users')\\n  .select()\\n  .overrideTypes<{ custom_field: string }>()\\n\\n// Replace existing types completely\\nconst replaceQuery = supabase\\n  .from('users')\\n  .select()\\n  .overrideTypes<{ id: number; name: string }, { merge: false }>()\\n\`\`\`"
             }
           ]
@@ -49762,7 +49821,8 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
                   {
                     "type": "literal",
                     "value": "error"
-                  }
+                  },
+                  null
                 ]
               }
             }
@@ -49805,7 +49865,8 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
                 {
                   "type": "literal",
                   "value": "error"
-                }
+                },
+                null
               ]
             }
           }
@@ -51543,7 +51604,8 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
                 {
                   "type": "literal",
                   "value": "error"
-                }
+                },
+                null
               ]
             }
           }
@@ -51683,7 +51745,8 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
                 {
                   "type": "literal",
                   "value": "error"
-                }
+                },
+                null
               ]
             }
           }
@@ -51723,7 +51786,8 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
                 {
                   "type": "literal",
                   "value": "error"
-                }
+                },
+                null
               ]
             }
           }
@@ -51770,7 +51834,8 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
                 {
                   "type": "literal",
                   "value": "error"
-                }
+                },
+                null
               ]
             }
           }
@@ -52092,6 +52157,17 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
                         }
                       },
                       {
+                        "name": "lockAcquireTimeout",
+                        "type": {
+                          "type": "nameOnly",
+                          "name": "SupabaseAuthClientOptions['lockAcquireTimeout']"
+                        },
+                        "isOptional": true,
+                        "comment": {
+                          "shortText": "Maximum time in milliseconds to wait when acquiring the auth lock before\\nstealing it from the previous holder. See \`GoTrueClientOptions.lockAcquireTimeout\`\\nfor full semantics (zero fails immediately, negative waits indefinitely)."
+                        }
+                      },
+                      {
                         "name": "persistSession",
                         "type": {
                           "type": "intrinsic",
@@ -52100,6 +52176,17 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
                         "isOptional": true,
                         "comment": {
                           "shortText": "Whether to persist a logged-in session to storage. Defaults to true."
+                        }
+                      },
+                      {
+                        "name": "skipAutoInitialize",
+                        "type": {
+                          "type": "nameOnly",
+                          "name": "SupabaseAuthClientOptions['skipAutoInitialize']"
+                        },
+                        "isOptional": true,
+                        "comment": {
+                          "shortText": "If true, skips automatic initialization in the auth client constructor.\\nUseful for SSR contexts where initialization timing must be controlled to\\nprevent race conditions with HTTP response generation."
                         }
                       },
                       {
@@ -52769,11 +52856,8 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
               "type": "array",
               "elemType": {
                 "type": "union",
+                "name": "RealtimeRemoveChannelResponse",
                 "subTypes": [
-                  {
-                    "type": "literal",
-                    "value": "error"
-                  },
                   {
                     "type": "literal",
                     "value": "ok"
@@ -52781,7 +52865,12 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
                   {
                     "type": "literal",
                     "value": "timed out"
-                  }
+                  },
+                  {
+                    "type": "literal",
+                    "value": "error"
+                  },
+                  null
                 ]
               }
             }
@@ -52819,11 +52908,8 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
             "name": "Promise",
             "awaited": {
               "type": "union",
+              "name": "RealtimeRemoveChannelResponse",
               "subTypes": [
-                {
-                  "type": "literal",
-                  "value": "error"
-                },
                 {
                   "type": "literal",
                   "value": "ok"
@@ -52831,7 +52917,12 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
                 {
                   "type": "literal",
                   "value": "timed out"
-                }
+                },
+                {
+                  "type": "literal",
+                  "value": "error"
+                },
+                null
               ]
             }
           }
@@ -53525,11 +53616,11 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
                       "type": "intrinsic",
                       "name": "undefined"
                     },
+                    null,
                     {
                       "type": "nameOnly",
                       "name": "ErrorCode"
-                    },
-                    null
+                    }
                   ]
                 }
               },
@@ -53617,11 +53708,11 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
                       "type": "intrinsic",
                       "name": "undefined"
                     },
+                    null,
                     {
                       "type": "nameOnly",
                       "name": "ErrorCode"
-                    },
-                    null
+                    }
                   ]
                 }
               },
@@ -53724,11 +53815,11 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
                       "type": "intrinsic",
                       "name": "undefined"
                     },
+                    null,
                     {
                       "type": "nameOnly",
                       "name": "ErrorCode"
-                    },
-                    null
+                    }
                   ]
                 }
               },
@@ -53831,11 +53922,11 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
                       "type": "intrinsic",
                       "name": "undefined"
                     },
+                    null,
                     {
                       "type": "nameOnly",
                       "name": "ErrorCode"
-                    },
-                    null
+                    }
                   ]
                 }
               },
@@ -53907,11 +53998,11 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
                       "type": "intrinsic",
                       "name": "undefined"
                     },
+                    null,
                     {
                       "type": "nameOnly",
                       "name": "ErrorCode"
-                    },
-                    null
+                    }
                   ]
                 }
               },
@@ -53975,11 +54066,11 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
                       "type": "intrinsic",
                       "name": "undefined"
                     },
+                    null,
                     {
                       "type": "nameOnly",
                       "name": "ErrorCode"
-                    },
-                    null
+                    }
                   ]
                 }
               },
@@ -54043,11 +54134,11 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
                       "type": "intrinsic",
                       "name": "undefined"
                     },
+                    null,
                     {
                       "type": "nameOnly",
                       "name": "ErrorCode"
-                    },
-                    null
+                    }
                   ]
                 }
               },
@@ -54150,11 +54241,11 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
                       "type": "intrinsic",
                       "name": "undefined"
                     },
+                    null,
                     {
                       "type": "nameOnly",
                       "name": "ErrorCode"
-                    },
-                    null
+                    }
                   ]
                 }
               },
@@ -54264,11 +54355,11 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
                       "type": "intrinsic",
                       "name": "undefined"
                     },
+                    null,
                     {
                       "type": "nameOnly",
                       "name": "ErrorCode"
-                    },
-                    null
+                    }
                   ]
                 }
               },
@@ -54332,11 +54423,11 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
                       "type": "intrinsic",
                       "name": "undefined"
                     },
+                    null,
                     {
                       "type": "nameOnly",
                       "name": "ErrorCode"
-                    },
-                    null
+                    }
                   ]
                 }
               },
@@ -54415,11 +54506,11 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
                       "type": "intrinsic",
                       "name": "undefined"
                     },
+                    null,
                     {
                       "type": "nameOnly",
                       "name": "ErrorCode"
-                    },
-                    null
+                    }
                   ]
                 }
               },
@@ -54521,11 +54612,11 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
                       "type": "intrinsic",
                       "name": "undefined"
                     },
+                    null,
                     {
                       "type": "nameOnly",
                       "name": "ErrorCode"
-                    },
-                    null
+                    }
                   ]
                 }
               },
@@ -54650,11 +54741,11 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
                       "type": "intrinsic",
                       "name": "undefined"
                     },
+                    null,
                     {
                       "type": "nameOnly",
                       "name": "ErrorCode"
-                    },
-                    null
+                    }
                   ]
                 }
               },
@@ -57505,7 +57596,8 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
                         {
                           "type": "literal",
                           "value": "refresh_token"
-                        }
+                        },
+                        null
                       ]
                     }
                   },
@@ -57686,7 +57778,8 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
                                   {
                                     "type": "literal",
                                     "value": "refresh_token"
-                                  }
+                                  },
+                                  null
                                 ]
                               }
                             },
@@ -57996,7 +58089,8 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
                                   {
                                     "type": "literal",
                                     "value": "refresh_token"
-                                  }
+                                  },
+                                  null
                                 ]
                               }
                             },
@@ -58347,7 +58441,8 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
                                   {
                                     "type": "literal",
                                     "value": "refresh_token"
-                                  }
+                                  },
+                                  null
                                 ]
                               }
                             },
@@ -58546,7 +58641,8 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
                         {
                           "type": "literal",
                           "value": "refresh_token"
-                        }
+                        },
+                        null
                       ]
                     }
                   },
@@ -58713,7 +58809,8 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
                                   {
                                     "type": "literal",
                                     "value": "refresh_token"
-                                  }
+                                  },
+                                  null
                                 ]
                               }
                             },
@@ -58931,6 +59028,9 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
               ]
             }
           }
+        },
+        "comment": {
+          "shortText": "Deletes a specific passkey for a specific user.\\n\\nThis function should only be called on a server. Never expose your \`service_role\` key in the browser."
         }
       },
       "@supabase/auth-js.GoTrueAdminPasskeyApi.listPasskeys": {
@@ -59033,6 +59133,9 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
               ]
             }
           }
+        },
+        "comment": {
+          "shortText": "Lists all passkeys registered for a specific user.\\n\\nThis function should only be called on a server. Never expose your \`service_role\` key in the browser."
         }
       },
       "@supabase/auth-js.GoTrueAdminApi.createUser": {
@@ -63567,7 +63670,8 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
                       {
                         "type": "literal",
                         "value": "pkce"
-                      }
+                      },
+                      null
                     ]
                   },
                   "isOptional": true
@@ -65183,7 +65287,8 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
                                     {
                                       "type": "literal",
                                       "value": "aal2"
-                                    }
+                                    },
+                                    null
                                   ]
                                 },
                                 {
@@ -65212,7 +65317,8 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
                                     {
                                       "type": "literal",
                                       "value": "aal2"
-                                    }
+                                    },
+                                    null
                                   ]
                                 },
                                 {
@@ -68546,6 +68652,9 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
               ]
             }
           }
+        },
+        "comment": {
+          "shortText": "Deletes a passkey for the currently signed-in user."
         }
       },
       "@supabase/auth-js.AuthPasskeyApi.list": {
@@ -68631,6 +68740,9 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
               ]
             }
           }
+        },
+        "comment": {
+          "shortText": "Lists all passkeys registered for the currently signed-in user."
         }
       },
       "@supabase/auth-js.AuthPasskeyApi.startAuthentication": {
@@ -68732,6 +68844,9 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
               ]
             }
           }
+        },
+        "comment": {
+          "shortText": "Starts the passkey authentication ceremony. Fetches an authentication\\nchallenge and credential request options from the server. Used as the\\nfirst step of a two-step sign-in flow when the caller wants to handle\\n\`navigator.credentials.get()\` themselves."
         }
       },
       "@supabase/auth-js.AuthPasskeyApi.startRegistration": {
@@ -68805,6 +68920,9 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
               ]
             }
           }
+        },
+        "comment": {
+          "shortText": "Starts the passkey registration ceremony. Fetches a registration challenge\\nand credential creation options from the server. Used as the first step of\\na two-step registration flow when the caller wants to handle\\n\`navigator.credentials.create()\` themselves."
         }
       },
       "@supabase/auth-js.AuthPasskeyApi.update": {
@@ -68917,6 +69035,9 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
               ]
             }
           }
+        },
+        "comment": {
+          "shortText": "Updates a passkey's friendly name."
         }
       },
       "@supabase/auth-js.AuthPasskeyApi.verifyAuthentication": {
@@ -70128,6 +70249,9 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
               ]
             }
           }
+        },
+        "comment": {
+          "shortText": "Verifies a passkey authentication credential against a previously issued\\nchallenge. Used as the second step of a two-step sign-in flow."
         }
       },
       "@supabase/auth-js.AuthPasskeyApi.verifyRegistration": {
@@ -70232,6 +70356,9 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
               ]
             }
           }
+        },
+        "comment": {
+          "shortText": "Verifies a passkey registration credential against a previously issued\\nchallenge. Used as the second step of a two-step registration flow."
         }
       },
       "@supabase/auth-js.GoTrueClient.exchangeCodeForSession": {
@@ -71510,6 +71637,7 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
                                 "type": {
                                   "type": "union",
                                   "subTypes": [
+                                    null,
                                     {
                                       "type": "literal",
                                       "value": "RSA"
@@ -71575,6 +71703,7 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
                           "type": {
                             "type": "union",
                             "subTypes": [
+                              null,
                               {
                                 "type": "literal",
                                 "value": "RSA"
@@ -71639,7 +71768,8 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
                                       {
                                         "type": "literal",
                                         "value": "aal2"
-                                      }
+                                      },
+                                      null
                                     ]
                                   }
                                 },
@@ -71876,7 +72006,8 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
                                       {
                                         "type": "literal",
                                         "value": "HS256"
-                                      }
+                                      },
+                                      null
                                     ]
                                   }
                                 },
@@ -92096,7 +92227,8 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
                           {
                             "type": "literal",
                             "value": "phone_change"
-                          }
+                          },
+                          null
                         ]
                       },
                       "comment": {
@@ -92189,7 +92321,8 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
                           {
                             "type": "literal",
                             "value": "email"
-                          }
+                          },
+                          null
                         ]
                       },
                       "comment": {
@@ -92241,7 +92374,8 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
                           {
                             "type": "literal",
                             "value": "email"
-                          }
+                          },
+                          null
                         ]
                       },
                       "comment": {
@@ -93725,8 +93859,8 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
               "response": "\`\`\`ts\\nlet x: typeof data // CountryRowProperties & { status: \\"A\\" | \\"B\\" } | null\\n\`\`\`"
             },
             {
-              "id": "example-5",
-              "name": "Example 5",
+              "id": "merge-vs-replace-existing-types",
+              "name": "Merge vs replace existing types",
               "code": "\`\`\`typescript\\n// Merge with existing types (default behavior)\\nconst query = supabase\\n  .from('users')\\n  .select()\\n  .overrideTypes<{ custom_field: string }>()\\n\\n// Replace existing types completely\\nconst replaceQuery = supabase\\n  .from('users')\\n  .select()\\n  .overrideTypes<{ id: number; name: string }, { merge: false }>()\\n\`\`\`"
             }
           ]
@@ -94156,6 +94290,7 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
                   "type": {
                     "type": "union",
                     "subTypes": [
+                      null,
                       {
                         "type": "literal",
                         "value": "exact"
@@ -96893,8 +97028,8 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
               "response": "\`\`\`ts\\nlet x: typeof data // CountryRowProperties & { status: \\"A\\" | \\"B\\" } | null\\n\`\`\`"
             },
             {
-              "id": "example-5",
-              "name": "Example 5",
+              "id": "merge-vs-replace-existing-types",
+              "name": "Merge vs replace existing types",
               "code": "\`\`\`typescript\\n// Merge with existing types (default behavior)\\nconst query = supabase\\n  .from('users')\\n  .select()\\n  .overrideTypes<{ custom_field: string }>()\\n\\n// Replace existing types completely\\nconst replaceQuery = supabase\\n  .from('users')\\n  .select()\\n  .overrideTypes<{ id: number; name: string }, { merge: false }>()\\n\`\`\`"
             }
           ]
@@ -98127,6 +98262,7 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
                   "type": {
                     "type": "union",
                     "subTypes": [
+                      null,
                       {
                         "type": "literal",
                         "value": "exact"
@@ -98199,8 +98335,23 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
           {
             "name": "values",
             "type": {
-              "type": "nameOnly",
-              "name": "RejectExcessProperties"
+              "type": "union",
+              "subTypes": [
+                {
+                  "type": "nameOnly",
+                  "name": "RejectExcessProperties"
+                },
+                {
+                  "type": "array",
+                  "elemType": {
+                    "type": "nameOnly",
+                    "name": "RejectExcessProperties"
+                  }
+                }
+              ]
+            },
+            "comment": {
+              "shortText": "The values to insert. Pass an object to insert a single row\\nor an array to insert multiple rows."
             }
           },
           {
@@ -98213,6 +98364,7 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
                   "type": {
                     "type": "union",
                     "subTypes": [
+                      null,
                       {
                         "type": "literal",
                         "value": "exact"
@@ -98227,11 +98379,27 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
                       }
                     ]
                   },
-                  "isOptional": true
+                  "isOptional": true,
+                  "comment": {
+                    "shortText": "Count algorithm to use to count inserted rows.\\n\\n\`\\"exact\\"\`: Exact but slow count algorithm. Performs a \`COUNT(*)\` under the\\nhood.\\n\\n\`\\"planned\\"\`: Approximated but fast count algorithm. Uses the Postgres\\nstatistics under the hood.\\n\\n\`\\"estimated\\"\`: Uses exact count for low numbers and planned count for high\\nnumbers."
+                  }
+                },
+                {
+                  "name": "defaultToNull",
+                  "type": {
+                    "type": "intrinsic",
+                    "name": "boolean"
+                  },
+                  "isOptional": true,
+                  "comment": {
+                    "shortText": "Make missing fields default to \`null\`.\\nOtherwise, use the default value for the column. Only applies for bulk\\ninserts."
+                  }
                 }
               ]
             },
-            "isOptional": true
+            "comment": {
+              "shortText": "Named parameters"
+            }
           }
         ],
         "ret": {
@@ -98272,67 +98440,7 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
               "response": "\`\`\`json\\n{\\n  \\"error\\": {\\n    \\"code\\": \\"23505\\",\\n    \\"details\\": \\"Key (id)=(1) already exists.\\",\\n    \\"hint\\": null,\\n    \\"message\\": \\"duplicate key value violates unique constraint \\\\\\"countries_pkey\\\\\\"\\"\\n  },\\n  \\"status\\": 409,\\n  \\"statusText\\": \\"Conflict\\"\\n}\\n\`\`\`"
             }
           ]
-        },
-        "altSignatures": [
-          {
-            "params": [
-              {
-                "name": "values",
-                "type": {
-                  "type": "array",
-                  "elemType": {
-                    "type": "nameOnly",
-                    "name": "RejectExcessProperties"
-                  }
-                }
-              },
-              {
-                "name": "options",
-                "type": {
-                  "type": "object",
-                  "properties": [
-                    {
-                      "name": "count",
-                      "type": {
-                        "type": "union",
-                        "subTypes": [
-                          {
-                            "type": "literal",
-                            "value": "exact"
-                          },
-                          {
-                            "type": "literal",
-                            "value": "planned"
-                          },
-                          {
-                            "type": "literal",
-                            "value": "estimated"
-                          }
-                        ]
-                      },
-                      "isOptional": true
-                    },
-                    {
-                      "name": "defaultToNull",
-                      "type": {
-                        "type": "intrinsic",
-                        "name": "boolean"
-                      },
-                      "isOptional": true
-                    }
-                  ]
-                },
-                "isOptional": true
-              }
-            ],
-            "ret": {
-              "type": {
-                "type": "nameOnly",
-                "name": "PostgrestFilterBuilder"
-              }
-            }
-          }
-        ]
+        }
       },
       "@supabase/postgrest-js.PostgrestQueryBuilder.select": {
         "name": "@supabase/postgrest-js.PostgrestQueryBuilder.select",
@@ -98358,6 +98466,7 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
                   "type": {
                     "type": "union",
                     "subTypes": [
+                      null,
                       {
                         "type": "literal",
                         "value": "exact"
@@ -98549,6 +98658,7 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
                   "type": {
                     "type": "union",
                     "subTypes": [
+                      null,
                       {
                         "type": "literal",
                         "value": "exact"
@@ -98622,8 +98732,23 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
           {
             "name": "values",
             "type": {
-              "type": "nameOnly",
-              "name": "RejectExcessProperties"
+              "type": "union",
+              "subTypes": [
+                {
+                  "type": "nameOnly",
+                  "name": "RejectExcessProperties"
+                },
+                {
+                  "type": "array",
+                  "elemType": {
+                    "type": "nameOnly",
+                    "name": "RejectExcessProperties"
+                  }
+                }
+              ]
+            },
+            "comment": {
+              "shortText": "The values to upsert with. Pass an object to upsert a\\nsingle row or an array to upsert multiple rows."
             }
           },
           {
@@ -98636,6 +98761,7 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
                   "type": {
                     "type": "union",
                     "subTypes": [
+                      null,
                       {
                         "type": "literal",
                         "value": "exact"
@@ -98650,7 +98776,21 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
                       }
                     ]
                   },
-                  "isOptional": true
+                  "isOptional": true,
+                  "comment": {
+                    "shortText": "Count algorithm to use to count upserted rows.\\n\\n\`\\"exact\\"\`: Exact but slow count algorithm. Performs a \`COUNT(*)\` under the\\nhood.\\n\\n\`\\"planned\\"\`: Approximated but fast count algorithm. Uses the Postgres\\nstatistics under the hood.\\n\\n\`\\"estimated\\"\`: Uses exact count for low numbers and planned count for high\\nnumbers."
+                  }
+                },
+                {
+                  "name": "defaultToNull",
+                  "type": {
+                    "type": "intrinsic",
+                    "name": "boolean"
+                  },
+                  "isOptional": true,
+                  "comment": {
+                    "shortText": "Make missing fields default to \`null\`.\\nOtherwise, use the default value for the column. This only applies when\\ninserting new rows, not when merging with existing rows under\\n\`ignoreDuplicates: false\`. This also only applies when doing bulk upserts."
+                  }
                 },
                 {
                   "name": "ignoreDuplicates",
@@ -98658,7 +98798,10 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
                     "type": "intrinsic",
                     "name": "boolean"
                   },
-                  "isOptional": true
+                  "isOptional": true,
+                  "comment": {
+                    "shortText": "If \`true\`, duplicate rows are ignored. If\\n\`false\`, duplicate rows are merged with existing rows."
+                  }
                 },
                 {
                   "name": "onConflict",
@@ -98666,11 +98809,16 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
                     "type": "intrinsic",
                     "name": "string"
                   },
-                  "isOptional": true
+                  "isOptional": true,
+                  "comment": {
+                    "shortText": "Comma-separated UNIQUE column(s) to specify how\\nduplicate rows are determined. Two rows are duplicates if all the\\n\`onConflict\` columns are equal."
+                  }
                 }
               ]
             },
-            "isOptional": true
+            "comment": {
+              "shortText": "Named parameters"
+            }
           }
         ],
         "ret": {
@@ -98722,83 +98870,7 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
               "response": "\`\`\`json\\n{\\n  \\"error\\": {\\n    \\"code\\": \\"23505\\",\\n    \\"details\\": \\"Key (handle)=(saoirse) already exists.\\",\\n    \\"hint\\": null,\\n    \\"message\\": \\"duplicate key value violates unique constraint \\\\\\"users_handle_key\\\\\\"\\"\\n  },\\n  \\"status\\": 409,\\n  \\"statusText\\": \\"Conflict\\"\\n}\\n\`\`\`"
             }
           ]
-        },
-        "altSignatures": [
-          {
-            "params": [
-              {
-                "name": "values",
-                "type": {
-                  "type": "array",
-                  "elemType": {
-                    "type": "nameOnly",
-                    "name": "RejectExcessProperties"
-                  }
-                }
-              },
-              {
-                "name": "options",
-                "type": {
-                  "type": "object",
-                  "properties": [
-                    {
-                      "name": "count",
-                      "type": {
-                        "type": "union",
-                        "subTypes": [
-                          {
-                            "type": "literal",
-                            "value": "exact"
-                          },
-                          {
-                            "type": "literal",
-                            "value": "planned"
-                          },
-                          {
-                            "type": "literal",
-                            "value": "estimated"
-                          }
-                        ]
-                      },
-                      "isOptional": true
-                    },
-                    {
-                      "name": "defaultToNull",
-                      "type": {
-                        "type": "intrinsic",
-                        "name": "boolean"
-                      },
-                      "isOptional": true
-                    },
-                    {
-                      "name": "ignoreDuplicates",
-                      "type": {
-                        "type": "intrinsic",
-                        "name": "boolean"
-                      },
-                      "isOptional": true
-                    },
-                    {
-                      "name": "onConflict",
-                      "type": {
-                        "type": "intrinsic",
-                        "name": "string"
-                      },
-                      "isOptional": true
-                    }
-                  ]
-                },
-                "isOptional": true
-              }
-            ],
-            "ret": {
-              "type": {
-                "type": "nameOnly",
-                "name": "PostgrestFilterBuilder"
-              }
-            }
-          }
-        ]
+        }
       },
       "@supabase/postgrest-js.PostgrestTransformBuilder.constructor": {
         "name": "@supabase/postgrest-js.PostgrestTransformBuilder.constructor",
@@ -99599,8 +99671,8 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
               "response": "\`\`\`ts\\nlet x: typeof data // CountryRowProperties & { status: \\"A\\" | \\"B\\" } | null\\n\`\`\`"
             },
             {
-              "id": "example-5",
-              "name": "Example 5",
+              "id": "merge-vs-replace-existing-types",
+              "name": "Merge vs replace existing types",
               "code": "\`\`\`typescript\\n// Merge with existing types (default behavior)\\nconst query = supabase\\n  .from('users')\\n  .select()\\n  .overrideTypes<{ custom_field: string }>()\\n\\n// Replace existing types completely\\nconst replaceQuery = supabase\\n  .from('users')\\n  .select()\\n  .overrideTypes<{ id: number; name: string }, { merge: false }>()\\n\`\`\`"
             }
           ]
@@ -100950,7 +101022,8 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
                   {
                     "type": "literal",
                     "value": "error"
-                  }
+                  },
+                  null
                 ]
               }
             }
@@ -100993,7 +101066,8 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
                 {
                   "type": "literal",
                   "value": "error"
-                }
+                },
+                null
               ]
             }
           }
@@ -102790,7 +102864,8 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
                 {
                   "type": "literal",
                   "value": "error"
-                }
+                },
+                null
               ]
             }
           }
@@ -102928,7 +103003,8 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
                 {
                   "type": "literal",
                   "value": "error"
-                }
+                },
+                null
               ]
             }
           }
@@ -102967,7 +103043,8 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
                 {
                   "type": "literal",
                   "value": "error"
-                }
+                },
+                null
               ]
             }
           }
@@ -103013,7 +103090,8 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
                 {
                   "type": "literal",
                   "value": "error"
-                }
+                },
+                null
               ]
             }
           }
@@ -103861,7 +103939,8 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
                       {
                         "type": "literal",
                         "value": "ANALYTICS"
-                      }
+                      },
+                      null
                     ]
                   },
                   "isOptional": true,
@@ -104227,7 +104306,8 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
                                 {
                                   "type": "literal",
                                   "value": "ANALYTICS"
-                                }
+                                },
+                                null
                               ]
                             },
                             "isOptional": true
@@ -104455,7 +104535,8 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
                                   {
                                     "type": "literal",
                                     "value": "ANALYTICS"
-                                  }
+                                  },
+                                  null
                                 ]
                               },
                               "isOptional": true
@@ -106393,7 +106474,8 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
                       {
                         "type": "literal",
                         "value": "ANALYTICS"
-                      }
+                      },
+                      null
                     ]
                   },
                   "isOptional": true,
@@ -106728,7 +106810,8 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
                                 {
                                   "type": "literal",
                                   "value": "ANALYTICS"
-                                }
+                                },
+                                null
                               ]
                             },
                             "isOptional": true
@@ -106956,7 +107039,8 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
                                   {
                                     "type": "literal",
                                     "value": "ANALYTICS"
-                                  }
+                                  },
+                                  null
                                 ]
                               },
                               "isOptional": true
@@ -108637,7 +108721,8 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
                                         {
                                           "type": "literal",
                                           "value": "ANALYTICS"
-                                        }
+                                        },
+                                        null
                                       ]
                                     },
                                     "isOptional": true
@@ -109583,7 +109668,8 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
                                         {
                                           "type": "literal",
                                           "value": "ANALYTICS"
-                                        }
+                                        },
+                                        null
                                       ]
                                     },
                                     "isOptional": true
@@ -111650,8 +111736,15 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
                                 {
                                   "name": "dataType",
                                   "type": {
-                                    "type": "literal",
-                                    "value": "float32"
+                                    "type": "union",
+                                    "name": "VectorDataType",
+                                    "subTypes": [
+                                      {
+                                        "type": "literal",
+                                        "value": "float32"
+                                      },
+                                      null
+                                    ]
                                   },
                                   "comment": {
                                     "shortText": "Data type of vector components (currently only 'float32')"
@@ -111684,7 +111777,8 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
                                       {
                                         "type": "literal",
                                         "value": "dotproduct"
-                                      }
+                                      },
+                                      null
                                     ]
                                   },
                                   "comment": {
@@ -112745,7 +112839,8 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
                                 {
                                   "type": "literal",
                                   "value": "dotproduct"
-                                }
+                                },
+                                null
                               ]
                             },
                             "isOptional": true,
@@ -113484,8 +113579,8 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
               "description": "You can also set the HTTP verb to \`GET\` when calling your Edge Function."
             },
             {
-              "id": "example-7",
-              "name": "Example 7",
+              "id": "standalone-client-invoke",
+              "name": "Standalone client invoke",
               "code": "\`\`\`ts\\nconst { data, error } = await functions.invoke('hello-world', {\\n  body: { name: 'Ada' },\\n})\\n\`\`\`"
             }
           ]
