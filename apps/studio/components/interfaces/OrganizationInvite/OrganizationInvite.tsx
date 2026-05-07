@@ -3,19 +3,15 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useEffect, useState, type ReactNode } from 'react'
 import { toast } from 'sonner'
-import {
-  Button,
-  Card,
-  CardContent,
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuRadioGroup,
-  DropdownMenuRadioItem,
-  DropdownMenuTrigger,
-} from 'ui'
+import { Button, Card, CardContent } from 'ui'
 import { Admonition, ShimmeringLoader } from 'ui-patterns'
 
 import { OrganizationInviteError } from './OrganizationInviteError'
+import {
+  ConnectMockMenu,
+  ConnectPreviewToolbar,
+  isTemporaryConnectMockPreviewEnabled,
+} from '@/components/interfaces/Connect/ConnectMockMenu'
 import {
   InterstitialAccountRow,
   InterstitialLayout,
@@ -156,12 +152,7 @@ const getMockState = (value: unknown): MockState | undefined => {
   return typeof value === 'string' && value in INVITE_MOCKS ? (value as MockState) : undefined
 }
 
-const isTemporaryMockPreviewEnabled = () => {
-  if (process.env.NEXT_PUBLIC_ENVIRONMENT !== 'prod') return true
-  if (typeof window === 'undefined') return false
-
-  return window.location.hostname.endsWith('.vercel.app')
-}
+const ORGANIZATION_INVITE_MOCK_STATES = Object.keys(INVITE_MOCKS) as MockState[]
 
 export const OrganizationInvite = () => {
   const router = useRouter()
@@ -176,7 +167,7 @@ export const OrganizationInvite = () => {
 
   const mockParamFromQuery = getMockState(router.query.mock)
   const isMockMode =
-    isTemporaryMockPreviewEnabled() && hasMounted && router.isReady && !!mockParamFromQuery
+    isTemporaryConnectMockPreviewEnabled() && hasMounted && router.isReady && !!mockParamFromQuery
   const mockParam = isMockMode ? mockParamFromQuery : undefined
   const mockConfig = mockParam ? INVITE_MOCKS[mockParam] : undefined
 
@@ -308,26 +299,14 @@ export const OrganizationInvite = () => {
 
   const effectiveIsJoining = isMockMode ? mockConfig?.isJoining || mockJoining : isJoining
   const displayName = effectivePrimaryEmail ?? effectiveUsername ?? ''
-  const mockSwitcher = isMockMode ? (
-    <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <Button type="warning" size="tiny" className="fixed right-3 top-3 z-50 font-mono">
-          mock: {mockParam}
-        </Button>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent align="end" className="w-[220px]">
-        <DropdownMenuRadioGroup
-          value={mockParam}
-          onValueChange={(value) => replaceMockState(value as MockState)}
-        >
-          {Object.keys(INVITE_MOCKS).map((state) => (
-            <DropdownMenuRadioItem key={state} value={state} className="font-mono text-xs">
-              {state}
-            </DropdownMenuRadioItem>
-          ))}
-        </DropdownMenuRadioGroup>
-      </DropdownMenuContent>
-    </DropdownMenu>
+  const mockSwitcher = isMockMode && mockParam ? (
+    <ConnectPreviewToolbar>
+      <ConnectMockMenu
+        state={mockParam}
+        states={ORGANIZATION_INVITE_MOCK_STATES}
+        onSelect={replaceMockState}
+      />
+    </ConnectPreviewToolbar>
   ) : null
 
   const withMockSwitcher = (children: ReactNode) => (

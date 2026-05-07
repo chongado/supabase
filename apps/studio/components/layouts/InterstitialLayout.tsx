@@ -140,21 +140,23 @@ export const SupabaseLogo = () => (
 )
 
 export const InterstitialMetadataPill = ({ children }: PropsWithChildren) => (
-  <p className="mx-auto mt-1.5 w-fit rounded-full border border-muted px-2 py-1 font-mono text-[11px] tracking-tight text-foreground-lighter">
+  <span className="mx-auto mt-1.5 flex w-fit items-center gap-1 rounded-full border border-muted px-2 py-1 font-mono text-[11px] tracking-tight text-foreground-lighter">
     {children}
-  </p>
+  </span>
 )
 
 export const InterstitialAccountRow = ({
   avatarUrl,
   displayName,
   action,
+  className,
 }: {
   avatarUrl?: string
   displayName?: string
   action?: ReactNode
+  className?: string
 }) => (
-  <Card className="shadow-none">
+  <Card className={cn('shadow-none', className)}>
     <CardContent className="flex items-center gap-3 border-none px-4 py-3">
       <ProfileImage
         src={avatarUrl}
